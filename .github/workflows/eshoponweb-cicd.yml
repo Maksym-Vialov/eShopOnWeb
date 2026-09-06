@@ -78,6 +78,7 @@ jobs:
       # Deploy Azure WebApp using Bicep file
       - name: deploy
         uses: azure/arm-deploy@v2
+        continue-on-error: true
         with:
           subscriptionId: ${{ env.SUBSCRIPTION-ID }}
           resourceGroupName: ${{ env.RESOURCE-GROUP }}
@@ -90,6 +91,7 @@ jobs:
       - name: Publish Website to WebApp
         if: false #Disable step due to comment above
         uses: Azure/webapps-deploy@v3
+        continue-on-error: true
         with:
           type: ZIP
           app-name: ${{ env.WEBAPP-NAME  }}
